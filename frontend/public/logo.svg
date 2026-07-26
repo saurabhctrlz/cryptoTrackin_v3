@@ -1,0 +1,41 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#26FBFF"/>
+      <stop offset="55%" stop-color="#8A5CFF"/>
+      <stop offset="100%" stop-color="#FF2E9A"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3.2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <circle cx="100" cy="100" r="98" fill="#05070A"/>
+
+  <!-- outer hexagon -->
+  <polygon points="100,10 175,52 175,148 100,190 25,148 25,52"
+           fill="none" stroke="url(#edgeGrad)" stroke-width="3.5" filter="url(#glow)"/>
+
+  <!-- inner hexagon, thin -->
+  <polygon points="100,28 159,62 159,138 100,172 41,138 41,62"
+           fill="none" stroke="#26FBFF" stroke-width="0.75" opacity="0.35"/>
+
+  <!-- transaction graph: 3 nodes connected, root cyan, one flagged pink -->
+  <line x1="100" y1="100" x2="66" y2="130" stroke="url(#edgeGrad)" stroke-width="2.5" filter="url(#glow)"/>
+  <line x1="100" y1="100" x2="134" y2="130" stroke="url(#edgeGrad)" stroke-width="2.5" filter="url(#glow)"/>
+  <line x1="100" y1="100" x2="100" y2="62"  stroke="url(#edgeGrad)" stroke-width="2.5" filter="url(#glow)"/>
+
+  <!-- root node -->
+  <circle cx="100" cy="100" r="9" fill="#05070A" stroke="#26FBFF" stroke-width="3" filter="url(#glow)"/>
+  <!-- normal node -->
+  <circle cx="100" cy="62" r="6" fill="#05070A" stroke="#26FBFF" stroke-width="2.5" filter="url(#glow)"/>
+  <!-- normal node -->
+  <circle cx="66" cy="130" r="6" fill="#05070A" stroke="#8A5CFF" stroke-width="2.5" filter="url(#glow)"/>
+  <!-- flagged node -->
+  <circle cx="134" cy="130" r="6" fill="#05070A" stroke="#FF2E9A" stroke-width="2.5" filter="url(#glow)"/>
+</svg>

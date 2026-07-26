@@ -1,0 +1,61 @@
+.TH CRYPTOTRACKIN 1 "2026" "cryptotrackin 1.0.0" "User Commands"
+.SH NAME
+cryptotrackin \- trace cryptocurrency wallet transactions and flag risk indicators
+.SH SYNOPSIS
+.B cryptotrackin
+[\fB\-a\fR \fIADDRESS\fR] [\fB\-l\fR \fILIMIT\fR] [\fB\-\-json\fR] [\fB\-\-history\fR]
+[\fB\-\-web\fR] [\fB\-\-host\fR \fIHOST\fR] [\fB\-\-port\fR \fIPORT\fR] [\fB\-\-no\-banner\fR]
+.SH DESCRIPTION
+.B cryptotrackin
+is a blockchain transaction forensics tool. Given a Bitcoin, Ethereum, or
+Litecoin
+wallet address, it retrieves transaction history, builds a transaction
+flow graph, and flags risk indicators such as interaction with known
+flagged addresses or fan-out patterns typical of fund obfuscation.
+
+Intended for legitimate security research, blockchain forensics
+training, and authorized investigation contexts (e.g. tracing
+ransomware payment addresses on practice/test data or with proper
+authorization).
+.SH OPTIONS
+.TP
+.BR \-a ", " \-\-address " " \fIADDRESS\fR
+Wallet address to trace (BTC, ETH, or LTC).
+.TP
+.BR \-l ", " \-\-limit " " \fILIMIT\fR
+Maximum number of transactions to fetch (default: 20).
+.TP
+.B \-\-json
+Output raw JSON instead of formatted text.
+.TP
+.B \-\-history
+Show recent search history from the local cache.
+.TP
+.B \-\-web
+Launch the web dashboard (graphical flow view) instead of CLI mode.
+.TP
+.BR \-\-host " " \fIHOST\fR
+Host to bind the web dashboard to (default: 127.0.0.1).
+.TP
+.BR \-\-port " " \fIPORT\fR
+Port for the web dashboard (default: 5000).
+.TP
+.B \-\-no\-banner
+Suppress the ASCII banner on startup.
+.SH EXAMPLES
+.TP
+Trace a Bitcoin address:
+.B cryptotrackin \-a 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+.TP
+Launch the interactive web dashboard:
+.B cryptotrackin \-\-web
+.TP
+View recent search history:
+.B cryptotrackin \-\-history
+.SH FILES
+.I ~/.cryptotrackin/tracker.db
+.RS
+Local SQLite cache of search history.
+.RE
+.SH AUTHOR
+Built by ambatron_ctrlz as a cybersecurity coursework / internship project.
